@@ -73,21 +73,224 @@
       * 함수형 인터페이스는 추상메서드가 하나뿐이어야 한다는 제약이 있음
 
 ### **@Native**
-  * native메서드에서 참조되는 상수 앞에 붙임(JDK1.8)
+* 네이티브 메서드에서 참조되는 상수 앞에 붙임(JDK1.8)
+* 예)
+    ```java
+  @Native
+  public static final long MTN_VALUE = 0x80000000000000L; //java.lang.Long 클래스에 정의된 상수
+* 네이티브 메서드(native method)
+  * JVM이 설치된 OS의 메서드
+  * 보통 C언어로 작성되어 있음. 자바에서는 메서드의 선언부만 정의하고 구현하지는 않음. 따라서 추상메서드처럼 선언부만 있고 몸통이 없다. 
+  * 모든 클래스의 조상인 Object클래스의 메서드들은 대부분 네이티브 메서드이다.
+    * 네이티브 메서드는 자바로 정의되어있으므로 호출하는 방법은 자바의 일반메서드와 같다.
+    * 그러나 실제로 호출되는 것은 OS의 메서드이다.
+    * 자바에 정의된 네이티브 메서드의 OS의 메서드를 연결해주는 작업이 존재한다.
 
 ### 메타 애너테이션(애너테이션을 정의하는데 사용)
+* '애너테이션을 위한 애너테이션'
+  * 애너테이션을 정의할 때 애너테이션의 적용대상(target)이나 유지기간(retention)등을 지정하는데 사용
 
 #### **@Target**
 * 애너테이션이 적용가능한 대상을 지정하는데 사용
+  * 애너테이션 적용 대상의 종류
+    * java.lang.annotation.ElementType이라는 열거형에 정의되어 있음
+    * 종류
+      * ANNOTATION_TYPE - 애너테이션
+      * CONSTRUCTOR - 생성자
+      * FIELD - 필드(멤버변수, enum상수)
+      * LOCAL_VARIABLE - 지역변수
+      * METHOD - 메서드
+      * PACKAGE - 패키지
+      * PARAMETER - 매개변수
+      * TYPE - 타입(클래스, 인터페이스, enum)을 선언할 때
+      * TYPE_PARAMETER - 타입 매개변수(JDK1.8)
+      * TYPE_USE - 타입이 사용되는 모든 곳(JDK1.8), 해당 타입의 변수를 선언할 때
+        * 주의) FIELD는 기본형에, TYPE_USE는 참조형에 사용됨!
+  * 사용 예)
+    ```java
+    import static java.lang.annotation.ElementType.*;
+    //static import문을 쓰면 'ElementType'을 'TYPE'와 같이 간단히 할 수 있음
+    
+    @Target({TYPE, FIELD, METHOD, PARAMETER, CONSTRUCTOR, LOCAL_VARIABLE})
+    //애너테이션을 적용할 수 있는 대상을 여러개의 값을 지정할 경우 중괄호{} 사용에 유의
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface SuppressWarnings {
+      Strng[] value();
+    }
+
+    @Target({FIELD, TYPE, TYPE_USE}) //적용 대상이 FIELD, TYPE, TYPE_USE
+    paublic @interface MyAnnotation { } //MyAnnotation을 정의
+    
+    @MyAnnotation //적용 대상이 TYPE인 경우
+    class MyClass {
+      @MyAnnotation //적용 대상이 FIELD인 경우
+      int i; 
+      @MyAnnotation //적용 대상이 TYPE_USE인 경우
+      MyClass mc;
+    }
 
 #### **@Documented**
 * 애너테이션 정보가 javadoc으로 작성된 문서에 포함되게 함
+* 기본 애너테이션 중 @Override, @SuppressWarnings를 제외하고는 모두 이 메타애너테이션이 붙어있음.
 
 #### **@Inherited**
 * 애너테이션이 자손 클래스에 상속되도록 함
+  * 조상 클래스에 이 애너테이션을 붙이면, 자손클래스도 이 애너테이션이 붙은 것과 같이 인식된다.
+  ```java
+  @Inherited //@SuperAnno가 자손까지 영향을 미치게 한다.
+  @interface SuperAnno {}
+  
+  @SuperAnno
+  class Parent {}
+  class Child extends Parent {} //Child클래스에도 @SuperAnno가 붙은 것으로 인식
+
 
 #### **@Retention**
-* 애너테이션이 유지되는 범위를 지정하는데 사용
+* 애너테이션이 유지되는 범위(기간)를 지정하는데 사용
+* 애너테이션 유지 정책(retention policy)의 종류
+  * SOURCE
+    * 소스파일에만 존재. 클래스파일에는 존재하지 않음.
+    * @Override나 @SuppressWarning처럼 컴파일러가 사용하는 애너테이션의 유지정책은 SOURCE임.
+      * 컴파일러를 직접 작성할 것이 아니라면 이 유지정책은 필요 없음.
+  * CLASS
+    * 클래스 파일에 존재. 실행시에 사용 불가. 기본값.
+    * 컴파일러가 애너테이션의 정보를 클래스파일에 저장할 수 있게는 하지만, 클래스파일이 JVM에 로딩될 때는 애너테이션의 정보가 무시되어 실행시 애너테이션의 정보를 읽을 수 없음
+      * --> 유지정책의 기본값은 CLASS이지만 잘 사용되지 않는 이유가 된다.
+  * RUNTIME
+    * 클래스 파일에 존재. 실행시에 사용가능.
+    * 실행시에 '리플렉션(reflection)'을 통해 클래스파일에 저장된 애너테이션의 정보를 읽어 처리할 수 있음
+    * @FunctionInterface는 컴파일러가 체크해주는 애너테이션이지만, 실행시에도 사용되므로 유지정책은 RUNTIME임.
+        ```java
+      @Documented
+      @Retention(RetentionPolicy.RUNTIME)
+      @Target(ElementType.TYPE)
+      public @interface FuntionalInterface {}
+    * 참고) 지역변수에 붙은 애너테이션은 컴파일러만 인식할 수 있으므로, 유지정책을 RUNTIME으로 붙여도 실행시에는 인식되지 않음
 
 #### **@Repeatable**
 * 애너테이션을 반복해서 적용할 수 있게 함(JDK1.8)
+* 보통은 하나의 대상에 한 종류의 애너테이션을 붙이는데, @Repeatable이 붙은 애너테이션은 여러번 붙일 수 있음
+  ```java
+  //@ToDo애너테이션을 정의함
+  @Repeatable(Todo.class) //ToDO애너테이션을 여러 번 반복해서 쓸 수 있게 해줌
+  @interface ToDo {
+    String value();
+  }
+  //MyClass에 @ToDo를 여러번 쓸 수 있음(@Repeatable에 의해)
+  @ToDo("delete test codes")
+  @ToDo("override inherited methods")
+  class MyClass{ ... }
+* 일반적인 애너테이션과 달리 같은 이름의 애너테이션이 여러 개가 하나의 대상에 적용될 수 있으므로, 이 애너테이션을 하나로 묶어 다룰 수 있는 애너테이션도 추가로 정의해야 함
+    ```java
+  @interface ToDos { //여러 개의 ToDo애너테이션을 담을 컨테이너 애너테이션 @ToDos
+    ToDo[] value(); //ToDo애너테이션 배열 타입의 요소를 선언. 주의! 이름이 반드시 value이어야 함
+  }  
+  
+  //@ToDo애너테ㅣ이션을 정의함
+    @Repeatable(Todo.class) //ToDO애너테이션을 여러 번 반복해서 쓸 수 있게 해줌
+    @interface ToDo {
+    String value();
+}
+
+## 3.4 애너테이션 타입 정의하기(직접 애너테이션 만들어 사용해보기!)
+* <U>새로운 애너테이션 정의하는 법</U>
+  * '@' 기호를 붙이는 것을 제외하면 인터페이스를 정의하는 것과 동일함
+    * 애너테이션에도 인터페이스처럼 상수를 정의할 수 있지만, 디폴트 메서드는 정의할 수 없음
+  * 엄밀히 말해, '@Override'는 애너테이션이고, 'Override'는 애너테이션의 타입임
+  
+    ```java
+    @interface 애너테이션이름 { 
+      타입 요소이름(); //애너테이션의 요소를 선언함
+      ...
+    }  
+
+### 애너테이션의 요소
+* 애너테이션의 요소(element)
+  * 애너테이션 내에 선언된 메서드
+* 추상 메서드의 형태를 가짐(반환값이 있고, 매개변수는 없음), 상속을 통해 구현하지 않아도 됨
+    ```java
+  @interface TestInfo {
+    int count();
+    String testedBy();
+    String[] testTools();
+    TestType testType(); //enum TestType{FIRST, FINAL}
+    DateTime testDate(); //자신이 아닌 다른 애너테이션(@DateTime)을 포함할 수 있음
+  }
+  @interface DateTime{
+    String yymmdd();
+    String hhmmss();
+  }
+* 애너테이션을 적용할 때 애너테이션의 요소를 빠짐없이 지정해주어야 함.
+  * 요소의 이름도 같이 적어주므로 순서는 상관없음
+  ```java
+  @TestInfo(count=3, testedBy="Kim", testTools={"JUnit", "AutoTester"}, testType=TestType.FIRST, testDate=@DateTime(yymmdd="160101", hhmmss="235959"))
+  public class NewClass { ... }
+
+* 각 요소는 기본값을 가질 수 있으며, 기본 값이 있는 요소는 애너테이션 정의시 값을 지정하지않으면 기본값 사용됨
+  ```java
+  @interface TestInfo {
+    int count() default 1; //기본값을 1로 지정
+  }
+  
+  @TestInfo //@TestInfo(count=1)과 동일 
+  public class NewClass { ... }
+  
+* 애너테이션 요소가 오직 하나뿐이고 이름이 value인 경우, 애너테이션을 적용할 요소의 이름을 생략하고 값만 쓰기 가능
+  ```java
+  @interface TestInfo{
+    String value();
+  }
+  @TestInfo("passed") //@TestInfo(value="passed")와 동일
+  class NewClass{ ... }
+  
+* 요소의 타입이 배열인 경우, 괄호{}를 사용해 여러개의 값 지정 가능
+  ```java
+  @interface TestInfo{
+    String[] testTools();
+  }
+  @TestInfo(testTools={"JUnit", "AutoTester"}) //값이 여러개인 경우
+  @TestInfo(testTools="JUnit") //값이 하나일 때는 괄호{} 생략 가능
+  @TestInfo(testTools={}) //값이 없을 때는 괄호{}가 반드시 필요
+
+* 기본값 지정시에도 괄호{} 사용 가능
+  ```java
+  @interface TestInfo{
+    String[] info() dafult {"aaa", "bbb"}; //기본값이 여러개인 경우 {} 사용
+    String[] info2() default "ccc"; //기본값이 하나인 경우 괄호 생략 가능
+  }
+  @TestInfo //@TestInfo(info={"aaa", "bbb"}, info2="ccc")와 동일
+  @TestInfo(info2={}) //@TestInfo(info={"aaa", "bbb"}, info2={})와 동일
+
+* 요소의 타입이 배열일때도 요소의 이름이 value이면, 요소의 이름이 생략할 수 있음
+
+### java.lang.annotation.Annotation
+* 모든 애너테이션의 조상 Annotation
+  * 그러나 애너테이션은 상속이 허용되지 않으므로 명시적으로 Annotation을 조상으로 지정할 수 없음(extends Annotation은 허용되지 않는 표현)
+  * 또한 Annotation은 애너테이션이 아니라 일반적 인터페이스로 정의되어 있음
+    * 모든 애너테이션 객체에 대해 equals(), hashCode(), toString()과 같은 메서드 호출 가능
+
+### 마커 애너테이션 Marker Annotation
+* 값을 지정할 필요가 없는 경우, 애너테이션의 요소를 하나도 정의하지 않을 수 있음
+  * 예) 
+    * Serializable인터페이스, Cloneable인터페이스
+  ```java
+  @Target(ElementType.METHOD)
+  @Retention(RetentionPolicy.SOURCE)
+  public @interface Override {} //마커애너테이션. 정의된 요소가 하나도 없음.
+  
+  @Target(ElementType.METHDO)
+  @Retention(RetentionPolicy.SOURCE)
+  public @interface Test {} //마커애너테이션. 정의된 요소가 하나도 없음.
+
+### 애너테이션 요소의 규칙
+* 요소의 타입은 기본형, String, enum, 애너테이션, Class만 허용됨
+* ()안에 매개변수를 선언할 수 없음
+* 예외를 선언할 수 없음
+* 요소를 타입 매개변수로 정의할 수 없음
+  ```java
+  @interface AnnoTest{
+    int id = 100; //OK. 상수 선언. static final int id = 100;
+    String major(int i, int j); //에러. 매개변수를 선언할 수 없음.
+    String minor() throws Exception; //에러. 예외를 선언할 수 없음.
+    ArrayList<T> list(); //에러. 요소의 타입에 타입 매개변수 사용 불가 
+  }
