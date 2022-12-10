@@ -269,20 +269,121 @@
   
 ## 1.5 Function의 합성과 Predicate의 결합
 * 함수형 인터페이스 Function의 메서드
-  * default <V> Function<T, V> andThen(Function<? super R, ? extends V> after)
+  * default <V> Function<T, V> **andThen**(Function<? super R, ? extends V> after)
+  * default <V> Function<V, R> **compose**(Function<? super V, ? extends T> before)
+  * static <T> Function<T, T> **identity**()
 * 함수형 인터페이스 Predicate의 메서드
+  * default Predicate<T> **and**(Predicate<? super T> other)
+  * default Predicate<T> **or**(Predicate<? super T> other)
+  * default Predicate<T> **negate**()
+  * static <T> Predicate<T> **isEqual**(Object targetRef)
+
+### Function의 합성
+* 수학에서 두 함수를 합성해 새로운 함수를 만들어내기 가능 --> 두 람다식도 함성해 새로운 람다식을 만들어내기 가능
+  * f.andThen(g)
+    * 함수 f를 먼저 적용하고, 그 다음에 함수 g를 적용함
+  * f.composer(g)
+    * 함수 g를 먼저 적용하고, 그 다음에 함수 f를 적용함
+  * identity()
+    * 함수를 적용하기 이전과 이후가 동일한 '항등 함수'가 필요할 때 사용 (x -> x)
+    * map()으로 변환작업할 때, 변환없이 그대로 처리하고자 할 때 사용됨
+  * 예)
+      ```java
+    //문자열을 숫자로 변환하는 함수 f
+    Function<String, Integer> f = (s) -> Integer.parseInt(s, 16);
+    //숫자를 2진 문자열로 변환하는 함수 g
+    Function<Integer, String> g = (i) -> Interger.toBinaryString(i);
+    //f와 g의 합성 - 예를 들어 h에 문자열 "FF"를 입력하면, 결과로 "1111111"을 얻음
+    Function<String, String> h = f.andThen(g);
+    //f와 g의 합성(2) - 예를들어 함수 j에 숫자 2를 입력하면 결과로 16을 얻음
+    Function<Integer, Integer> j = f.compose(g);
+
+### Predicate의 결합
+* 여러 조건식을 논리 연산자인 $$, ||, !으로 연결해 하나의 식을 구성하기 가능 --> 여러 Predicate를 <u>and(), or(), negate()</u>로 연결해 하나의 새로운 Predicate로 결합할 수 있음
+  * and(), or()
+    * 예)
+      ```java
+        Predicate<Integer> p = i -> i < 100;
+        Predicate<Integer> q = i -> i < 200;
+        Predicate<Integer> r = i -> i%2 == 0;
+        Predicate<Integer> notP = p.negate(); // i>= 100
+        //100 <= i && (i < 200 || i%2 == 0)
+        Predicate<Integer> all = notP.and(q.or(r));
+        Predicate<Integer> all2 = notP.and(i -> i < 200).or(i -> i%2 == 0);
+        System.out.println(all.test(150)); //true
+  * negate()
+    * Predicate의 끝에 negate()를 붙이면 조건식 전체가 부정이 됨
+  * isEqual()
+    * 두 대상을 비교하는 Predicate를 만들 때 사용함
+    * isEqual()의 매개변수로 비교대상을 하나 지정하고, 또 다른 비교대상은 test()의 매개변수로 지정함
+    * 예)
+      ```java
+      Predicate<String> p = Predicate.isEqual(str1);
+      boolean result = p.test(str2); //str1과 str2가 같은지 비교하여 결과를 반환
+      //위의 두 문장을 합칠 경우
+      boolean result = Predicate.isEqual(str1).test(str2); //str1과 str2가 같은지 비교
 
 ## 1.6 메서드 참조
+* 메서드 참조(method reference)
+  * 람다식이 하나의 메서드만 호출하는 경우 메서드 참조를 통해 람다식을 더욱 간결하게 표현 가능
+    * 예)
+      ```java
+      //문자열을 정수로 변환하는 함수
+      Function<String, Integer> f = (String s) -> Integer.parseInt(s);
+      //위의 람다식을 메서드로 표현하면
+      Integer meaninglessName(String s) {
+        return Integer.parseInt(s);
+      } //값을 받아서 Inter.parseInt()에 넘겨주기만 하는 거추장스러운 메서드
+      Function<String, Integer> f2 = Integer::parseInt; //f1과 동일함. 메서드 참조.
+      //람다식의 일부를 생략했지만, 컴파일러는 생략된 부분을 우변의 parsInt메서드의 선언부 혹은 좌변의 Function인터페이스에 지정된 지네릭 타입으로부터 쉽게 알아낼 수 있음
+    * 예2)
+      ```java
+      Bifunction<String, String, Boolean> f = (s1, s2) -> s1.equals(s2);
+      //람다식을 메서드 참조로 변경
+      BiFunction<String, String, Boolean> f2 = String::equals;
+  * 이미 생성된 객체의 메서드를 람다식에서 사용한 경우에는 클래스 이름 대신 그 객체의 참조변수를 적어줘야 함.
+    * 예)
+      ```java
+      MyClass obj = new MyClass();
+      Function<String, Boolean> f = (x) -> obj.equals(x); //람다식
+      Function<String, Boolean> g2 = obj::equals; //메서드 참조
+    
+### 람다식을 메서드 참조로 변환하는 방법
+* 하나의 메서드만 호출하는 람다식은 <u>**'클래스이름::메서드이름'**</u> 또는 <u>**'참조변수::메서드이름'**</u>으로 바꿀 수 있다.
+* static메서드 참조
+  * 람다
+    * (x) -> ClassName.method(x)
+  * 메서드 참조
+    * className::method
+* 인스턴스메서드 참조
+  * 람다
+    * (obj, x) -> obj.method(x)
+  * 메서드 참조
+    * ClassName::method
+* 특정 객체 인스턴스 메서드 참조
+  * 람다
+    * (x) -> obj.method(x)
+  * 메서드 참조
+    * obj::method
 
-
-
-
-
-
-
-
-
-
-
-
-
+#### 생성자의 메서드 참조
+* 생성자를 호출하는 람다식도 메서드 참조로 변환 가능
+  * 매개변수가 없는 생성자의 경우
+  * 예)
+    ```java
+    Supplier<MyClass> s = () -> new MyClass(); //람다식
+    Supplier<MyClass> s2 = MyClass::new; //생성자의 메서드 참조
+  * 매개변수가 있는 생성자의 경우
+    * 매개변수의 개수에 따라 알맞은 함수형 인터페이스를 사용해야 함
+    * 필요한 경우 함수형 인터페이스를 새로 정의해야 함
+    * 예)
+      ```java
+      Function<Integer, MyClass> f = (i) -> new MyClass(i); //람다식
+      Function<Integer, MyClass> f2 = MyClass::new; //메서드 참조
+      BiFunction<Integer, String, MyClass> bf = (i, s) -> new MyClass(i, s);
+      BiFunction<Integer, String, MyClass> bg2 = MyClass:new; //메서드 참조
+  * 배열을 생성하는 경우
+    * 예)
+      ```java
+      Function<Integer, int[]> f = x -> new int[x]; //람다식
+      Function<Integer, int[]> f2 = int[]::new; //메서드 참조
