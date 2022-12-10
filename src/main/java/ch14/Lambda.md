@@ -161,7 +161,128 @@
   * LambdaEx3.java 참고
 
 ## 1.4 java.util.function 패키지
+* 함수형 인터페이스를 정의할 때, <u>java.util.function패키지의 인터페이스를 활용</u>하는 것이 좋다.
+  * 왜냐하면 대부분의 메서드는 타입이 비슷하기 때문이다.
+    * 매개변수가 없거나 한 개, 또는 두 개, 반환값은 없거나 한 개.
+    * 지네릭메서드로 정의하면 매개변수나 반환타입이 달라도 문제가 되지 않음
+  * java.util.function패키지의 인터페이스를 활용하면 함수형 인터페이스에 정의된 메서드 이름도 통일되고, 재사용성이나 유지보수 측면에서도 좋기 때문이다.
 
+### 기본적인 함수형 인터페이스
+  * **java.lang.Runnable**
+    * void **run**()
+    * 매개변수도 없고 반환값도 없음
+  * **Supplier<T>**
+    * T **get**()
+    * 매개변수는 없고 반환값만 있음
+  * **Consumer<T>**
+    * void **accept**(T t)
+    * 매개변수만 있고 반환값이 없음
+  * **Function<T, R>**
+    * R **apply**(T t)
+    * 일반적인 함수. 하나의 매개변수를 받아 결과를 반환함
+  * **Predicate<T>**
+    * boolean **test**(T t)
+    * 조건식을 표현하는 데 사용됨. 매개변수는 하나, 반환타입은 boolean
+
+### 조건식의 표현에 사용되는 함수형 인터페이스 Predicate
+* Predicate<T>
+  * Function의 변형. 반환타입이 boolean이라는 것만 다음.
+  * 조건식을 람다식으로 표현하는데 사용됨.
+  * 예) 
+    ```java
+    Predicate<String> isEmptyStr = s -> s.lengt() == 0;
+    String s = "";
+    if(isEmptyStr.test(s)){ //if(s.length() == 0)
+      System.out.println("This is empty String");
+    }
+  
+### 매개변수가 두 개인 함수형 인터페이스 Bi~
+* 매개변수의 개수가 2개인 함수형 인터페이스는 이름 앞에 접두사 'Bi'가 붙음
+  * 매개변수의 타입으로 보통 'T'를 사용하므로, 알파벳에서 'T'의 다움 문자인 'U', 'V', 'W'를 매개변수의 타입으로 사용하는 것일뿐 별다른 의미는 없음
+* 매개변수가 두 개인 함수형 인터페이스
+  * **BiConsumer<T, U>**
+    * void **accept**(T t, U u)
+    * 두 개의 매개변수만 있고 반환값이 없음
+  * **BiPredicate<T, U>**
+    * boolean **test**(T t, U u)
+    * 조건식을 표현하는 데 사용함. 매개변수는 둘, 반환값은 boolean
+  * **BiFunction<T, U>**
+    * R **apply**(T t, U u)
+    * 두 개의 매개변수를 받아 하나의 결과를 리턴함
+  * Supplier는 매개변수가 없이 반환값만 존재하므로 BiSupplier가 존재할 수 없음
+* 매개변수의 개수가 3개인 함수형 인터페이스
+  * 직접 정의해서 사용해야함
+  * 예)
+    ```java
+    @FuntionalInterface
+    interface TriFunction<T, U, V, R> {
+      R applay(T t, U u, V v);
+    }
+
+### UnaryOperator와 BinaryOperator
+* 매개변수의 타입과 반환타입의 타입이 모두 일치하는 함수형 인터페이스
+  * **UnaryOperator<T>**
+    * T **apply**(T t)
+    * Function의 자손. Function과 달리 매개변수와 결과의 타입이 같음. 
+  * **BinaryOperator<T>**
+    * T **apply**(T t, T t)
+    * BiFunction의 자손. BiFunction과 달리 매개변수와 결과의 타입이 같음.
+    
+### 컬렉션 프레임웍과 함수형 인터페이스
+* 컬렉션 프레임웍의 인터페이스의 다수의 디폴트 메서드가 추가됨. 그 중 일부는 함수형 인터페이스를 사용함.
+* 컬렉션 프레임웍의 함수형 인터페이스를 사용하는 메서드
+  * Collection 인터페이스
+    * boolean **removeif**(Predicate<E> filter)
+      * 조건에 맞는 요소를 삭제
+  * List 인터페이스
+    * void **replaceAll**(UnaryOperator<E> operator)
+      * 모든 요소를 변환하여 대체
+  * Iterable 인터페이스
+    * void **forEach**(Consumer<T> action)
+      * 모든 요소에 작업 action을 수행
+  * Map 인터페이스
+    * V **compute**(K key, BiFunction<K, V, V> f)
+      * 지정된 키의 값에 작업 f를 수행
+    * V **computeIfAbsent**(K key, Function<K, V> f)
+      * 지정된 키가 없으면, 작업 f를 수행 후 추가
+    * V **computeIfPresent**(K key, BiFunction<K, V, V> f)
+      * 지정된 키가 있을 때 작업 f를 수행
+    * V **merge**(K key, V value, BiFunction<V, V, V> f)
+      * 모든 요소에 병합작업 f를 수행
+    * void **forEach**(BiConsumer<K, V> action)
+      * 모든 요소에 작업 action을 수행
+    * void **replaceAll**(BiFunction<K, V, V> f)
+      * 모든 요소에 치환작업 f를 수행
+      
+### 기본형을 사용하는 함수형 인터페이스
+* 기본형 타입의 값을 처리할 때 래퍼클래스를 사용하면 비효율적임. 
+* 따라서 기본형 타입의 값을 효율적으로 처리하기 위해 기본형 함수형 인터페이스 필요
+  * **DoubleToIntFunction**
+    * int applyAsInt(double d)
+  * **ToIntFunction<T>**
+    * int applyAsInt(T value)
+  * **IntFunction<R>**
+    * R apply(T t, U u)
+  * **ObjIntConsumer<T>**
+    * void accept(T t, U u)
+* LambdaEx6.java 예제 참고
+  
 ## 1.5 Function의 합성과 Predicate의 결합
+* 함수형 인터페이스 Function의 메서드
+  * default <V> Function<T, V> andThen(Function<? super R, ? extends V> after)
+* 함수형 인터페이스 Predicate의 메서드
 
 ## 1.6 메서드 참조
+
+
+
+
+
+
+
+
+
+
+
+
+

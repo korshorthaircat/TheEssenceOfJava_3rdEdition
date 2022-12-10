@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce7d3fa7-389c-4179-a3e6-caebc4146c35" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch12/AnnotationEx5.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch14/Lambda.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch14/LambdaEx1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch14/LambdaEx2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch14/LambdaEx3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch14/LambdaEx4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch14/LambdaEx5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch14/LambdaEx6.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch12/annotation.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch12/annotation.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch14/Lambda.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch14/Lambda.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,60 +41,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;last_opened_file_path&quot;: &quot;/Users/clamence/TIL/TheEssenceOfJava_3rdEdition/src/main/java/ch12&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "last_opened_file_path": "/Users/clamence/TIL/TheEssenceOfJava_3rdEdition/src/main/java/ch14",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/ch14" />
       <recent name="$PROJECT_DIR$/src/main/java/ch12" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ch14" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.LambdaEx3">
-    <configuration name="AnnotationEx4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch12.AnnotationEx4" />
-      <module name="TheEssenceOfJava_3rdEdition.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch12.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AnnotationEx5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch12.AnnotationEx5" />
-      <module name="TheEssenceOfJava_3rdEdition.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch12.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LambdaEx1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch14.LambdaEx1" />
-      <module name="TheEssenceOfJava_3rdEdition.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ch14.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.LambdaEx6">
     <configuration name="LambdaEx2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ch14.LambdaEx2" />
       <module name="TheEssenceOfJava_3rdEdition.main" />
@@ -124,13 +86,52 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="LambdaEx4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ch14.LambdaEx4" />
+      <module name="TheEssenceOfJava_3rdEdition.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch14.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LambdaEx5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ch14.LambdaEx5" />
+      <module name="TheEssenceOfJava_3rdEdition.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch14.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LambdaEx6" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ch14.LambdaEx6" />
+      <module name="TheEssenceOfJava_3rdEdition.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch14.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.LambdaEx6" />
+        <item itemvalue="Application.LambdaEx5" />
+        <item itemvalue="Application.LambdaEx4" />
         <item itemvalue="Application.LambdaEx3" />
         <item itemvalue="Application.LambdaEx2" />
-        <item itemvalue="Application.LambdaEx1" />
-        <item itemvalue="Application.AnnotationEx5" />
-        <item itemvalue="Application.AnnotationEx4" />
       </list>
     </recent_temporary>
   </component>
