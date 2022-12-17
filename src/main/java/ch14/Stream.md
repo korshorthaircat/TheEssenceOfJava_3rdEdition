@@ -368,9 +368,209 @@
       //peek()은 filter()나 map()의 결과를 확인할 때 유용함
 
 ### (6) mapToInt(), mapToLong(), mapToDouble()
-### (7) flatMap() - Stream<T[]>를 Stream<T>로 변환
+* map()
+  * 연산의 결과로 Stream<T>타입 스트림 반환
+  * --> 스트림의 요소를 기본형 타입으로 변환할 경우 기본형 스트림으로 변환하는 것이 더 유용할 수 있음
+* mapToInt(), mapToLong(), mapToDouble()
+  * ```java
+    DoubleStream mapToDouble(ToDoubleFunction<? super T> mapper)
+    IntStream mapToInt(ToIntFunction<? super T> mapper)
+    LongStream mapToLong(ToLongFunction<? super T> mapper)
+  * Stream<Integer>과 IntStream 비교
+    * ```java
+      //스트림에 포함된 모든 학생들의 성적을 합산해야 하는 상황
+
+      //map()으로 학생의 총점을 뽑아 Stream<Integer> 타입 스트림 생성
+      Stream<Integer> studentScoreStream1 = studentStream.map(Student::getTotalScore);
+
+      //mapToInt()로 IntStream타입의 스트림 생성
+      IntStream studentScroreStream2 = studentStream.mapToInt(Student::getTotalScore);
+      int allTotalScore = strudentScoreStream.sum(); //int sum();
+        //더 효율적. 성적을 더할 때 Integer를 int로 변환할 필요가 없기 때문!
+  * 기본형 스트림이 제공하는 메서드
+    * Stream<T>에서 지원하는 숫자를 다루는 목적의 메서드들과 비교하면...
+      * Stream<T>는 count()만 지원함
+      * Stream<T>도 max(), min()을 정의하고있지만 매개변수로 Comparator를 지정해야만 함
+    * 기본형 스트림(IntStream, LongStream, DoubleStream)이 제공하는 숫자를 다루는데 편리한 메서드들
+      * int sum()
+        * 스트림의 모든 요소의 총합
+        * 스트림의 요소가 하나도 없을 때 0을 반환
+      * OptionalDouble average()
+        * sum() / (double)count()
+      * OptionalInt max()
+        * 스트림의 요소 중 제일 큰 값
+      * OptionalInt min()
+        * 스트림의 요소 중 제일 작은 값
+      * 참고
+        * OptioanlInt, OptionalDouble 타입
+          * 일종의 래퍼클래스. 각각 int값과 Double값을 내부적으로 가지고 있음.
+          * 기본형스트림 클래스가 제공하는 메서드 average() 반환타입이 Optional***인 이유
+            * 스트림의 요소가 하나도 없어 0인 것과, 여러 요소들을 합한 평균이 0인 상황을 구분하기 위해
+      * 특징
+        * 최종연산이기 때문에 호출 후에 스트림이 닫힘
+          * 예) 하나의 스트림에 sum()과 average()를 연속해 호출 불가
+            * ```java
+              IntStream scoreStream = studentStream.mapToInt(Student::getTotlaScore);
+              long totalScore = scoreStream.sum(); //sum()은 최종연산이므로 호출 후 스트림이 닫힘.
+              OptionalDouble average = scoreStream.average(); //에러! 스트림이 이미 닫혀있음.
+              double d = average.getAsDouble(); //OptionalDouble에 저장된 값을 꺼내서 d에 저장
+            * sum()과 average()를 모두 호출해야 할 때 스트림을 또 생성해야 함 --> 불편 --> IntSummaryStatistics가 제공하는 다양한 메서드 사용 권장
+* IntSummaryStatistics
+  * IntSummaryStatistics가 제공하는 메서드
+  * ```java
+    IntSummaryStatistics stat = scoreStream.summaryStatistics();
+    long totalCount = stat.getCount();
+    long totalScore = stat.getSum();
+    double avgScore = stat.getAverage();
+    int minScore = stat.getMin();
+    int maxScore = stat.getMax(); 
+* 기본형 스트림을 Stream<T>로 변환하는 법
+  * mapToObj() 이용
+    * 예) IntStream을 Stream<String>으로 변환
+      * ```java
+        IntStream intStream = new Random().ints(1, 46); //1~45 사이의 정수(46 포함x) 스트림 생성
+        Stream<String> lottoStream = intStream.distinct().limit(6).sorted()
+                                              .mapToObj(i -> i+ ", "); //정수를 문자열로 변환
+        lottoStream.forEach(System.out::print);
+* CharSequence
+  * chars()
+    * String이나 StringBuffer에 저장된 문자들을 IntStream으로 다룰 수 있게 해줌
+    * 예)
+      * ```java
+        IntStream charStream = "12345".chars(); //default IntStream chars()
+        int charSum = charStream.map(ch -> ch-'0').sum(); //charSum = 15
+* 스트림간의 변환 정리 (자바의정석 p.864 참고)
+  * Stream<String> -> IntStream으로 변환할 때
+    * mapToInt(Integer::parseInt)
+  * Stream<Integer> -> IntStream으로 변환할 때
+    * mapToInt(Integer::intValue)
+
+### (7) flatMap()
+* flatMap()
+  * Stream<T[]>를 Stream<T>로 변환할 때 사용
+    * 예1) <u>스트림의 요소가 배열이거나 map()의 연산결과가 배열인 경우</u>(스트림의 타입이 Stream<T[]>)
+      * ```java
+        Stream<String[]> studentArrStream = Stream.of(
+          new String[]{"김자바", "박자바", "안자바"},
+          new String[]{"이자바", "전자바", "홍자바"}
+        );
+        //각 요소의 문자열들을 합쳐 문자열이 요소인 스트림 Stream<String>으로 만드는 방법
+        //1. map()을 써서 스트림의 요소를 변환
+        //2. Arrays.stream(T[])을 써서 배열을 스트림으로 생성
+        //그러나 map()을 쓰면...
+        Stream<Stream<String>> stringStreamStream = studentArrStream.map(Arrays::stream);
+        //따라서 flatMap()을 써야...
+        Stream<String> stringStream = studentArrStream.flatMap(Arrays::stream);
+      * map()과 flatMap() 비교
+        * Stream<String[]> ---> map(Arrays::stream) ---> Stream<Stream<String>>
+        * Stream<String[]> ---> flatMap(Arrays::stream) ---> Stream<String>
+    * 예2) 여러 문장을 요소로 하는 스트림이 있을 때, 이 문장들을 split()로 나눠 요소가 단어인 스트링스트림으로 만들고 싶은 상황
+      * ```java
+         String[] lineArr = {
+          "Believe or not It is true",
+          "Do or not There is no try"
+         }
+
+         Stream<String> lineStream = Arrays.stream(lineArr);
+         //map()을 쓰면...
+         Stream<Stream<String>> stringArrStream = lineStream.map(line -> Stream.of(line.split(" +")));
+         //flatMap()을 쓰면...
+         Stream<String> stringStream = lineStream.flatMap(line -> Stream.of(line.split(" +")));
+      * map()과 flatMap() 비교
+        * Stream<String> ---> map(s -> Stream.of(s.split(" +"))) ---> Stream<Stream<String>>
+        * Stream<String> ---> flatMap(s -> Stream.of(s.split(" +"))) ---> Stream<String>
 
 ## 2.4 Optional<T>와 OptionalInt
+* Optional<T>
+  * 지네릭 클래스. 'T'타입의 객체를 감싸는 래퍼클래스.
+  * Optional타입의 객체에는 모든 타입의 참조변수를 담을 수 있음.
+  * java.util.Optional은 JDK 1.8부터 추가되었음.
+  * ```java
+    public final class Optional<T> {
+      private final T value; //T타입의 참조변수
+        ...
+    }
+  * 최종연산의 결과를 그냥 반환하지 않고 Optional객체에 담아서 반환하면, 반환된 결과가 null인지 if문으로 체크하는 대신 Optional에 정의된 메서드를 통해 간단히 처리할 수 있음
+    * null체크를 위한 if문 없이도 NullPointerException이 발생하지 않는 보다 간결하고 안전한 코드 작성이 가능해짐
+    
+### Optional 객체 생성하기
+* of(), ofNullable()
+  * Optional 객체를 생성할 때 사용
+    * 만일 참조변수의 값이 null일 가능성이 있다면 ---> ofNullable()사용
+    * Optional<T>타입의 참조변수를 기본값으로 초기화할 때는 ---> empty()사용
+  * 예)
+    * ```java
+      String str = "abc";
+      Optional<String> optVal1 = Optional.of(str);
+      Optional<String> optVal2 = Optional.of("abc");
+      Optional<String> optVal3 = Optional.of(new String("abc"));
+      
+      //만일 참조변수의 값이 null일 가능성이 있다면 ofNullable()사용
+      Optional<String> optVal4 = Optional.of(null); //에러! NullPointerException 발생
+      Optional<String> optVal5 = Optional.ofNullable(null); //ok
+      
+      //Optional<T>타입의 참조변수를 기본값으로 초기화할 때는 empty() 사용
+      Optional<String> optVal6 = null; //null로 초기화
+      Optional<String> optVal7 = Optional.<String>empty(); //빈 객체로 초기화
+
+### Optional 객체의 값 가져오기
+#### get(), orElse(), orElseGet(), orElseThrow()
+* get()
+  * Optional객체에 저장된 값을 가져올 때 사용
+  * 값이 null일 때 NoSuchElementException이 발생할 수 있음 
+* orElse()    
+  * 값이 null일 때 대체할 값 지정
+* orElseGet()
+  * null을 대체할 값을 반환하는 람다식 지정
+* orElseThrow()
+  * null일 때 지정된 예외를 발생시킴
+* 예)
+  * ```java
+    Optional<String> optVal = Optioanl.of("abc");
+    String str1 = optVal.get(); //optVal에 저장된 값을 반환. null이면 예외 발생.
+    String str2 = optVal.orElse(""); //optVal에 저장된 값이 null일 때는 ""를 반환
+    String str3 = optVal.orElseGet(String::new); // () -> new String()와 동일
+    String str4 = optVal.orElseThrow(NullPointerException::new); //널이면 예외 발생
+
+#### filter(), map(), flatMap()
+  * Optional 객체에도 filter(), map(), flatMap() 사용 가능
+    * map()의 연산결과가 Optional<Optional<T>>일 때, flatMap()을 사용하면 Optional<T>를 결과로 얻음
+    * Optional객체의 값이 null이면, 이 메서드들은 아무 일도 하지 않음
+    * 예)
+      * ```java
+        int result = Optional.of("123")
+                            .filter(x -> x.length() > 0)
+                            .map(Integer::parseInt).orElse(-1); //result=123
+        result = Optional.of("")
+                        .filter(x -> x.length() > 0)
+                        .map(Interger::parseInt).orElse(-1); //result=-1;
+
+#### isPresent()
+* isPresent()는 Optional객체의 값이 null이면 false를, 아니면 true를 반환함
+
+#### ifPresent()
+* ifPresent(Consumer<T> block)은 값이 있으면 주어진 람다식을 실행하고, 없으면 아무일도 하지 않음
+* 예)
+  * ```java
+    if(str != null) {
+      System.out.println(str);
+    }
+    //위의 조건문을 isPresent()를 사용해 다음과 같이 작성 가능
+    if(Optional.ofNullable(str).isPresent()) {
+      System.out.println(str);
+    }
+    //ifPresent()로 더 간결히 작성 가능
+    Optional.ofNullable(str).ifPresent(System.out::println);
+    
+* Stream클래스에 정의된 메서드 중 Optional<T>를 반환하는 메서드
+  * Optional<T> findAny()
+  * Optional<T> findFirst()
+  * Optional<T> max(Comparator<? super T> comparator)
+  * Optional<T> min(Comparator<? super T> comparator)
+  * Optional<T> reduce(BinaryOperator<T> accumulator)
+
+### OptionalInt, OptionalLong, OptionalDouble
+
 ## 2.5 스트림의 최종연산
 ## 2.6 collect()
 ## 2.7 Collector 구현하기 
