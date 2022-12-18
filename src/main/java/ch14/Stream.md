@@ -570,7 +570,45 @@
   * Optional<T> reduce(BinaryOperator<T> accumulator)
 
 ### OptionalInt, OptionalLong, OptionalDouble
-
+* 기본형스트림(IntStream, DoubleStream, LongStream..)에는 Optional도 기본형을 값으로 하는 OptionalInt, OptionalDouble, OptionalLong을 반환함
+  * IntStream에 정의된 메서드 중 Optional***를 반환하는 메서드 목록
+    * OptionalInt findAny()
+    * OptionalInt fineFirst() 
+    * OptionalInt reduce(IntBinaryOperator op)
+    * OptionalInt max()
+    * OptionalInt min()
+    * OptionalDouble average()
+  * 주의) 기본형 Optional에 저장된 값을 꺼낼 때 사용하는 메서드 이름이 조금씩 다름
+    * Optional<T> 클래스 ---> T get()
+    *  OptionalInt 클래스 ---> int getAsInt()
+    *  OptionalLong 클래스 ---> long getAsLong()
+    *  OptionalDouble 클래스 ---> double getAsDouble()
+  * 기본형 Optional의 정의
+    * 예) OptionalInt wjddml
+      * ```java
+        public final class OptionalInt {
+          ...
+          private final boolean isPresent; //값이 저장되어 있으면 true
+          private final int value; //int타입의 변수
+        }
+  * Optional 객체에 0을 저장했을 때, null을 저장했을 때 비교
+    * ```java
+      OptionalInt opt1 = OptionalInt.of(0); //OptionalInt에 0을 저장
+      OptionalInt opt2 = OptionalInt.empty(); //OptionalInt에 0을 저장
+      OptionalInt opt3 = Optional.ofNullable(null);
+      OptionalInt opt4 = Optional.empty();
+      
+      //opt1와 opt2를  비교하면...?
+      //저장된 값이 없는 것과 0이 저장된 것은 isPrsent라는 인스턴스 변수로 구분 가능함
+      System.out.println(opt1.isPresent()); //true
+      System.out.println(opt2.isPresent()); /false
+      System.out.println(opt1.getAsInt()); //0
+      System.out.println(opt2.getAsInt()); //NoSuchElementException 예외발생
+      System.out.println(opt1.equals(opt2)); //false
+      
+      //opt3와 opt3를 비교하면...?
+      System.out.println(opt3.equals(opt4)); //true
+      
 ## 2.5 스트림의 최종연산
 ## 2.6 collect()
 ## 2.7 Collector 구현하기 
