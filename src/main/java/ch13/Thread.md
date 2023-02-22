@@ -74,9 +74,7 @@
     * wait()은 notify() 혹은 notifyAll()이 호출될 때까지 기다림
     * 매개변수가 있는 wait()은 지정된 시간동안만 기다림 (지정된 시간이 지나면 자동으로 notify()가 호출되는 것과 같음)
   * `notify()`
-    * 해당 객체의 waiting pool에 있는 임의의 쓰레드가 통지를 받음
   * `notifyAll()`
-
 ### 9-3. Lock과 Condition을 이용한 동기화
 ### 9-4. volatile
 ### 9-5. fork & join 프레임웍
