@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce7d3fa7-389c-4179-a3e6-caebc4146c35" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch13/ThreadWaitEx1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch13/ThreadWaitEx2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch13/ThreadWaitEx3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch13/ForkJoinEx1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch13/Thread.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch13/Thread.md" afterDir="false" />
     </list>
@@ -41,25 +39,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/clamence/TIL/TheEssenceOfJava_3rdEdition/src/main/java/ch13",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/clamence/TIL/TheEssenceOfJava_3rdEdition/src/main/java/ch13&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/ch13" />
@@ -70,9 +68,9 @@
       <recent name="ch14" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ThreadWaitEx3">
-    <configuration name="ThreadEx21" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch13.ThreadEx21" />
+  <component name="RunManager" selected="Application.ForkJoinEx1">
+    <configuration name="ForkJoinEx1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ch13.ForkJoinEx1" />
       <module name="TheEssenceOfJava_3rdEdition.main" />
       <extension name="coverage">
         <pattern>
@@ -149,11 +147,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ForkJoinEx1" />
         <item itemvalue="Application.ThreadWaitEx3" />
         <item itemvalue="Application.ThreadWaitEx2" />
         <item itemvalue="Application.ThreadWaitEx1" />
         <item itemvalue="Application.ThreadEx22" />
-        <item itemvalue="Application.ThreadEx21" />
       </list>
     </recent_temporary>
   </component>
@@ -170,7 +168,8 @@
       <workItem from="1676796619246" duration="124000" />
       <workItem from="1676797118257" duration="605000" />
       <workItem from="1676797919275" duration="1000" />
-      <workItem from="1676811223237" duration="10683000" />
+      <workItem from="1676811223237" duration="11497000" />
+      <workItem from="1677247099280" duration="2822000" />
     </task>
     <servers />
   </component>

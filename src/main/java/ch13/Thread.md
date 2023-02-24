@@ -78,3 +78,25 @@
 ### 9-3. Lock과 Condition을 이용한 동기화
 ### 9-4. volatile
 ### 9-5. fork & join 프레임웍
+* JDK1.7부터 도입된 멀티쓰레드 프로그래밍을 도와주는 프레임워크
+  * 하나의 작업을 작은 단위로 나워 여러 쓰레드가 동시에 처리하는 것을 쉽게 만들어 줌
+#### fork & join 프레임워크 사용법
+  1. RecursiveAction 또는 RecursiveTask 두 클래스 중 하나를 상속
+     * `RecursiveAction`
+         * 반환값이 없는 작업 구현시 사용
+     * `RecursiveTask`
+       * 반환값이 있는 작업 구현시 사용
+  2. 상속을 통해 추상메서드 `compute()` 구현
+      * 실제로 수행할 작업 내용 작성
+      * 수행할 작업의 범위를 어떻게 나눌 것인지 내용 작성
+      * 적당히 나눈 작업의 범위를 fork()메서드로 작업큐에 넣음
+      * 나머지 작업에 대하여 compute()를 재귀호출함
+  2. 쓰레드풀 생성, 수행할 작업 생성
+     * `ForkJoinPool forkJoinPool = new ForkJoinPool();`
+     * `MyTask task = MyTask(myData1, ...);`
+  3. 수행할 작업을 시작하기 위해 invoke()호출
+     * `forkJoinPool.invoke(task);`
+* 예) 1부터 n까지의 합을 계산한 결과를 돌려주는 작업 구현
+  * java/ch13/ForkJoinEx1.java
+    
+      
