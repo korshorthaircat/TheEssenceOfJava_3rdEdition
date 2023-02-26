@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce7d3fa7-389c-4179-a3e6-caebc4146c35" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch13/ForkJoinEx1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch14/exercise/Exercise14_4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch14/exercise/Exercise14_5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch14/exercise/Exercise14_6.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch14/exercise/Exercise14_7.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch14/exercise/Exercise14_8.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch14/exercise/exercise.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch13/Thread.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch13/Thread.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +39,6 @@
   <component name="ProjectId" id="2INpn8aCfAS2d7wxOzB0tdtap0r" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
-    <option name="flattenPackages" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
@@ -68,13 +71,13 @@
       <recent name="ch14" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ForkJoinEx1">
-    <configuration name="ForkJoinEx1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch13.ForkJoinEx1" />
+  <component name="RunManager" selected="Application.Exercise14_8">
+    <configuration name="Exercise14_4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ch14.exercise.Exercise14_4" />
       <module name="TheEssenceOfJava_3rdEdition.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ch13.*" />
+          <option name="PATTERN" value="ch14.exercise.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -82,12 +85,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ThreadEx22" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch13.ThreadEx22" />
+    <configuration name="Exercise14_5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ch14.exercise.Exercise14_5" />
       <module name="TheEssenceOfJava_3rdEdition.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ch13.*" />
+          <option name="PATTERN" value="ch14.exercise.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -95,12 +98,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ThreadWaitEx1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch13.ThreadWaitEx1" />
+    <configuration name="Exercise14_6" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ch14.exercise.Exercise14_6" />
       <module name="TheEssenceOfJava_3rdEdition.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ch13.*" />
+          <option name="PATTERN" value="ch14.exercise.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -108,12 +111,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ThreadWaitEx2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch13.ThreadWaitEx2" />
+    <configuration name="Exercise14_7" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ch14.exercise.Exercise14_7" />
       <module name="TheEssenceOfJava_3rdEdition.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ch13.*" />
+          <option name="PATTERN" value="ch14.exercise.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -121,12 +124,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ThreadWaitEx3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch13.ThreadWaitEx3" />
+    <configuration name="Exercise14_8" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ch14.exercise.Exercise14_8" />
       <module name="TheEssenceOfJava_3rdEdition.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ch13.*" />
+          <option name="PATTERN" value="ch14.exercise.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -147,11 +150,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ForkJoinEx1" />
-        <item itemvalue="Application.ThreadWaitEx3" />
-        <item itemvalue="Application.ThreadWaitEx2" />
-        <item itemvalue="Application.ThreadWaitEx1" />
-        <item itemvalue="Application.ThreadEx22" />
+        <item itemvalue="Application.Exercise14_8" />
+        <item itemvalue="Application.Exercise14_7" />
+        <item itemvalue="Application.Exercise14_4" />
+        <item itemvalue="Application.Exercise14_6" />
+        <item itemvalue="Application.Exercise14_5" />
       </list>
     </recent_temporary>
   </component>
@@ -169,7 +172,9 @@
       <workItem from="1676797118257" duration="605000" />
       <workItem from="1676797919275" duration="1000" />
       <workItem from="1676811223237" duration="11497000" />
-      <workItem from="1677247099280" duration="2822000" />
+      <workItem from="1677247099280" duration="5196000" />
+      <workItem from="1677332377711" duration="3292000" />
+      <workItem from="1677379257053" duration="14324000" />
     </task>
     <servers />
   </component>
