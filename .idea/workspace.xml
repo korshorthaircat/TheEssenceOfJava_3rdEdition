@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce7d3fa7-389c-4179-a3e6-caebc4146c35" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch14/exercise/Exercise14_8.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch14/exercise/Exercise14_9.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch12/EnumEx1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch12/EnumEx2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch12/enums.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,13 +69,13 @@
       <recent name="ch14" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Exercise14_9">
-    <configuration name="Exercise14_4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch14.exercise.Exercise14_4" />
+  <component name="RunManager" selected="Application.EnumEx2">
+    <configuration name="EnumEx1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ch12.EnumEx1" />
       <module name="TheEssenceOfJava_3rdEdition.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ch14.exercise.*" />
+          <option name="PATTERN" value="ch12.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -82,12 +83,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Exercise14_6" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch14.exercise.Exercise14_6" />
+    <configuration name="EnumEx2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ch12.EnumEx2" />
       <module name="TheEssenceOfJava_3rdEdition.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ch14.exercise.*" />
+          <option name="PATTERN" value="ch12.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -147,11 +148,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.EnumEx2" />
+        <item itemvalue="Application.EnumEx1" />
         <item itemvalue="Application.Exercise14_9" />
         <item itemvalue="Application.Exercise14_8" />
         <item itemvalue="Application.Exercise14_7" />
-        <item itemvalue="Application.Exercise14_4" />
-        <item itemvalue="Application.Exercise14_6" />
       </list>
     </recent_temporary>
   </component>
@@ -171,7 +172,7 @@
       <workItem from="1676811223237" duration="11497000" />
       <workItem from="1677247099280" duration="5196000" />
       <workItem from="1677332377711" duration="3292000" />
-      <workItem from="1677379257053" duration="19643000" />
+      <workItem from="1677379257053" duration="23159000" />
     </task>
     <servers />
   </component>
