@@ -81,9 +81,52 @@
 * collect()
   * 스트림의 요소를 수집하는 최종 연산, 리듀싱과 유사
 
-
-
+  
 ## 2.7 Collector 구현하기 
+* 컬렉터 작성 = 컬렉터 인터페이스 구현
+* Collector 인터페이스
+  * ```
+    public interface Collector<T, A, R> {
+      Supplier<A> supplier(); //작업 결과를 저장할 공간을 제공
+      BiConsumer<A, T> accumulator(); //스트림의 요소를 수집(collect)할 방법을 제공
+      BinaryOperator<A> combiner(); //두 저장공간을 병합할 방법을 제공(병렬 스트림)
+      Function<A, R> finisher(); //결과를 최종적으로 변환할 수 있는 방법을 제공
+    
+      Set<Characteristics> characteristics(); //컬렉터의 특성이 담긴 Set을 반환
+  * Collector 인터페이스의 추상메서드
+    * supplier()
+      * 수집 작업 결과를 저장할 공간을 제공
+    * accumulator()
+      * 스트림의 요소를 어떻게 supplier()가 제공한 공간에 누적할 것인가를 정의
+    * combiner()
+      * 병렬 스트림인 경우, 여러 쓰레드에 의해 처리된 결과를 어떻게 합칠것인가를 정의
+    * finisher()
+      * 작업결과를 변환함
+      * 변환이 필요없다면 항등함수 Function.identity()를 반환하면 됨
+    * characteristics()
+      * 컬렉터가 수행하는 작업의 속성에 대한 정보 제공
+      * 아래의 속성 중 해당하는 것을 Set에 담아 반환
+        * Characteristics.CONCURRENT
+          * 병렬로 처리할 수 있는 작업
+        * Characteristics.UNORDERED
+          * 스트림의 요소의 순서가 유지될 필요 없는 작업
+        * Characteristics.IDENTITY_FINISH
+          * finisher()가 항등함수인 작업
+      * 예)
+        * ```
+          public Set<Characteristics> characteristics() {
+            return Collection.unmodifiableSet(EnumSet.of(
+              Collector.Characteristics.CONCURRENT,
+              Collector.Characteristics.UNORDERED
+            ));
+          }
+          //아무런 속성도 지정하고 싶지 않다면,
+          Set<Characteristics> characteristics() {
+            return Collection.emptySet(); //지정할 특성이 없는 경우 비어있는 set을 반환
+          }
+  * Collector의 특징
+    * 내부적으로 처리하는 과정이 리듀싱과 같음
+
 ## 2.8 스트림의 변환
 
 
