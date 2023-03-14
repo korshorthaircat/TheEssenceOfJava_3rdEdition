@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce7d3fa7-389c-4179-a3e6-caebc4146c35" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch14/CollectorEx1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/score2.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch15/RandomAccessFileEx1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch15/RandomAccessFileEx2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch15/RandomAccessFileEx3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch15/StandardIOEx1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch15/StandardIOEx3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch14/Stream2.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch14/Stream2.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,11 +35,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -46,30 +52,33 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2INpn8aCfAS2d7wxOzB0tdtap0r" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/clamence/TIL/TheEssenceOfJava_3rdEdition/src/main/java/ch14/exercise&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/clamence/TIL/TheEssenceOfJava_3rdEdition/src/main/java/ch14/exercise",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/ch14/exercise" />
@@ -81,13 +90,13 @@
       <recent name="ch14" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CollectorEx1">
-    <configuration name="CollectorEx1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch14.CollectorEx1" />
+  <component name="RunManager" selected="Application.RandomAccessFileEx3">
+    <configuration name="RandomAccessFileEx1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ch15.RandomAccessFileEx1" />
       <module name="TheEssenceOfJava_3rdEdition.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ch14.*" />
+          <option name="PATTERN" value="ch15.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -95,12 +104,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EnumEx1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch12.EnumEx1" />
+    <configuration name="RandomAccessFileEx2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ch15.RandomAccessFileEx2" />
       <module name="TheEssenceOfJava_3rdEdition.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ch12.*" />
+          <option name="PATTERN" value="ch15.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -108,12 +117,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EnumEx2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch12.EnumEx2" />
+    <configuration name="RandomAccessFileEx3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ch15.RandomAccessFileEx3" />
       <module name="TheEssenceOfJava_3rdEdition.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ch12.*" />
+          <option name="PATTERN" value="ch15.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -121,12 +130,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EnumEx3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch12.EnumEx3" />
+    <configuration name="StandardIOEx2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ch15.StandardIOEx2" />
       <module name="TheEssenceOfJava_3rdEdition.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ch12.*" />
+          <option name="PATTERN" value="ch15.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -134,12 +143,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Exercise14_9" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch14.exercise.Exercise14_9" />
+    <configuration name="StandardIOEx3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ch15.StandardIOEx3" />
       <module name="TheEssenceOfJava_3rdEdition.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ch14.exercise.*" />
+          <option name="PATTERN" value="ch15.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -160,11 +169,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.CollectorEx1" />
-        <item itemvalue="Application.EnumEx3" />
-        <item itemvalue="Application.EnumEx2" />
-        <item itemvalue="Application.EnumEx1" />
-        <item itemvalue="Application.Exercise14_9" />
+        <item itemvalue="Application.RandomAccessFileEx3" />
+        <item itemvalue="Application.RandomAccessFileEx2" />
+        <item itemvalue="Application.RandomAccessFileEx1" />
+        <item itemvalue="Application.StandardIOEx3" />
+        <item itemvalue="Application.StandardIOEx2" />
       </list>
     </recent_temporary>
   </component>
@@ -185,7 +194,8 @@
       <workItem from="1677247099280" duration="5196000" />
       <workItem from="1677332377711" duration="3292000" />
       <workItem from="1677379257053" duration="25240000" />
-      <workItem from="1678278054909" duration="2705000" />
+      <workItem from="1678278054909" duration="3368000" />
+      <workItem from="1678798179718" duration="2300000" />
     </task>
     <servers />
   </component>
@@ -202,6 +212,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
