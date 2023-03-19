@@ -158,3 +158,17 @@
     * 이 두 스트림을 통해 프로세스간 통신(입출력)이 이루어짐
       * 스트림들은 연결된 상대편 소켓의 스트림들과 교차연결됨
         * 한 소켓의 입력 스트림은 다른 한 소켓의 출력 스트림과 연결됨
+
+## UDP소켓 프로그래밍
+* TCP소켓 프로그래밍과 UDP소켓 프로그래밍 비교
+  * TCP소켓 프로그래밍에서는 Socket과 ServerSocket tkdyd
+  * UDP소켓 프로그래밍에서는 DatagramSocket과 DatagramPacket을 사용 
+    * UDP는 연결지향적 프로토콜이 아니므로 ServerSocket이 불필요
+* DatagramSocket
+* DatagramPacket
+  * 데이터를 DatagramPacket에 담아 전송
+  * 헤더와 데이터로 구성됨
+    * 헤더
+      * DatagramPacket을 수신할 호스트의 정보(주소, 포트)가 저장됨
+
+    
