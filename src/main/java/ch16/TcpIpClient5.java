@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.ConnectException;
 import java.net.Socket;
 
-public class TcpIpClient6 {
+public class TcpIpClient5 {
     public static void main(String[] args) {
         try {
             String serverIp = "127.0.0.1";

@@ -5,19 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce7d3fa7-389c-4179-a3e6-caebc4146c35" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch16/NetworkEx1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch16/NetworkEx2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch16/NetworkEx3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch16/NetworkEx4.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch16/Networking.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch16/TcpIpClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch16/TcpIpClient6.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch16/TcpIpServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch16/TcpIpServer2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch16/TcpIpServer3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch16/TcpIpServer4.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch16/TcpIpServer5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch16/TcpIpMultiChatClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ch16/TcpIpMultiChatServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch16/TcpIpClient6.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch16/TcpIpClient5.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +86,7 @@
       <recent name="ch14" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TcpIpClient6">
+  <component name="RunManager" selected="Application.TcpIpMultiChatClient">
     <configuration name="TcpIpClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ch16.TcpIpClient" />
       <module name="TheEssenceOfJava_3rdEdition.main" />
@@ -109,8 +100,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TcpIpClient6" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch16.TcpIpClient6" />
+    <configuration name="TcpIpClient5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ch16.TcpIpClient5" />
       <module name="TheEssenceOfJava_3rdEdition.main" />
       <extension name="coverage">
         <pattern>
@@ -122,9 +113,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TcpIpServer3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch16.TcpIpServer3" />
+    <configuration name="TcpIpMultiChatClient" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ch16.TcpIpMultiChatClient" />
       <module name="TheEssenceOfJava_3rdEdition.main" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;cat&quot;" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ch16.*" />
@@ -135,8 +127,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TcpIpServer4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ch16.TcpIpServer4" />
+    <configuration name="TcpIpMultiChatServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ch16.TcpIpMultiChatServer" />
       <module name="TheEssenceOfJava_3rdEdition.main" />
       <extension name="coverage">
         <pattern>
@@ -172,13 +164,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.TcpIpClient" />
+      <item itemvalue="Application.TcpIpClient5" />
+      <item itemvalue="Application.TcpIpMultiChatClient" />
+      <item itemvalue="Application.TcpIpMultiChatServer" />
+      <item itemvalue="Application.TcpIpServer5" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TcpIpClient6" />
+        <item itemvalue="Application.TcpIpMultiChatClient" />
+        <item itemvalue="Application.TcpIpMultiChatServer" />
+        <item itemvalue="Application.TcpIpClient5" />
         <item itemvalue="Application.TcpIpServer5" />
         <item itemvalue="Application.TcpIpClient" />
-        <item itemvalue="Application.TcpIpServer4" />
-        <item itemvalue="Application.TcpIpServer3" />
       </list>
     </recent_temporary>
   </component>
@@ -202,7 +201,7 @@
       <workItem from="1678278054909" duration="3368000" />
       <workItem from="1678798179718" duration="4895000" />
       <workItem from="1678884012379" duration="4460000" />
-      <workItem from="1679059208680" duration="14285000" />
+      <workItem from="1679059208680" duration="18791000" />
     </task>
     <servers />
   </component>
